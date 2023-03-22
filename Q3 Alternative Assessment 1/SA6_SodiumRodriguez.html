@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>One Time Password </title>
+			<meta charset="UTF-8"> 
+			<meta name="author" content="Shania Lynn Rodriguez"> 
+			<meta name="keywords" content="HTML, CSS, JavaScript"> 
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        	body {background: lightblue; 
+            	text-align: center;
+            	font-family: arial;
+                color: navy;
+            }
+            button {padding: 10px; background:violet }
+            a {font-size: 0.5em; color: maroon}
+        </style>
+
+	</head>
+	
+	<body>
+	<h1> Final Verification Step </h1>
+	<h2> Current OTP: <span onload="generateOTP()" id="otp"> _ _ _ _ _ _ </span> <a href="" onclick="generateOTP()"> New OTP </a></h2>
+    <button onclick="enterOTP()"> Enter the OTP as shown above </button>
+    
+		<script>
+		
+			function generateOTP(){
+				var num = '0123456789';
+				let otp = '';
+				<!-- This will randomize the variable num into 6 numbers only -->
+				for (let i = 0; i < 6; i++ ) {
+					otp += num[Math.floor(Math.random() * 10)];
+				}	
+				return otp;
+			}
+			document.getElementById("otp").innerHTML = generateOTP(); // displays the generated numbers in the document.
+		
+			function enterOTP() {
+				var x = prompt("Enter the given OTP"); // prompts the user to type in the given numbers, which will now be the x variable.
+				var y = document.getElementById("otp").innerHTML; // declares the generated OTP for this function as the variable y.
+			
+				if (x == y) {
+					window.open("https://khub.src.pshs.edu.ph/"); // if the user typed in the correct OTP, it will open this site.
+				}	else { 
+					alert("Generate a new OTP and Retry"); // if the user typed in the incorrect OTP, it will alert the user.
+					document.getElementById("otp").innerHTML = generateOTP(); // after it alerts the user, it will generate a new OTP.
+				}
+			}
+		</script>
+	</body>
+</html>

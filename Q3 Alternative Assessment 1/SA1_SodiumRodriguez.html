@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Toss coin</title>
+			<meta charset="UTF-8"> 
+			<meta name="author" content="Shania Lynn Rodriguez"> 
+			<meta name="keywords" content="HTML, CSS, JavaScript"> 
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        	body {background: navy; 
+            	text-align: center;
+            	font-family: arial;
+                color: white;
+            }
+            button {padding: 10px; background:violet }
+            span {color: yellow}
+            #coin, h5 {color: yellow; }
+            #coin { background: gray; 
+            	width: 25px; 
+                height: 25px;
+                padding: 25px;          
+                border: 5px dashed darkgray;
+                border-radius: 50%;
+                margin: 0 auto;
+                
+            }
+            
+        </style>
+
+	</head>
+	<body onload="getGuess()">
+        <h1> Heads or Tail? </h1>
+        <h2 onclick="getGuess()"> Click here to change your Guess: <span id="guess"> </span></h2>
+        <h2 onclick="ranChange()" id="coin"> H </span></h2>
+        <h5> Click on the coin above to randomly change its face and compare with your guess </h5> 
+        <script>
+		
+            var getGuess = function() {
+                uGuess = prompt("Type H for head and T for tail","H");
+                uGuess.toUpperCase; // converting to an uppercase letter
+                (uGuess != "H" && uGuess != "T") ?	alert("Wrong Input"):
+                    guess.innerHTML = uGuess;
+            }
+	
+			var ranChange = function() {
+				random = Math.floor(Math.random() * 2); // randomizes H or T
+				document.getElementById("coin").innerHTML =  random; // returns the random function
+				
+				if (random == 0) { 
+					document.getElementById("coin").innerHTML = "H"; // returns H as the number 0
+					if(uGuess == "H"){
+						alert("Your guess is CORRECT!"); 
+					} else {
+						alert("Your guess is WRONG!");
+					}	
+				}
+				
+				if (random == 1) {
+					document.getElementById("coin").innerHTML = "T"; // returns T as the number 1
+					
+					if(uGuess == "T"){
+						alert("Your guess is CORRECT!");
+					} else {
+						alert("Your guess is WRONG!");
+					}
+				}
+			}
+        </script>
+	</body>
+</html>
